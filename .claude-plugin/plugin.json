@@ -1,0 +1,14 @@
+{
+  "name": "emmaly",
+  "description": "Core collaboration style, preferred technology stack, and development conventions",
+  "version": "0.3.0",
+  "author": {
+    "name": "Emmaly",
+    "email": "emmaly@emma.ly",
+    "url": "https://emma.ly"
+  },
+  "homepage": "https://github.com/emmaly/emmaly",
+  "repository": "https://github.com/emmaly/emmaly",
+  "license": "MIT",
+  "keywords": ["skills", "workflows", "productivity", "standards", "collaboration", "go", "svelte"]
+}

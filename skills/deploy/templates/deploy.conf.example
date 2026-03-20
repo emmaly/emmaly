@@ -1,0 +1,4 @@
+# Remote deployment target
+DEPLOY_HOST=server.local
+DEPLOY_USER=emmaly
+PROJECT_NAME=myproject

@@ -1,0 +1,22 @@
+{
+  "name": "emmaly",
+  "metadata": {
+    "description": "Emmaly's Claude Code plugin marketplace"
+  },
+  "owner": {
+    "name": "Emmaly",
+    "email": "emmaly@emma.ly"
+  },
+  "plugins": [
+    {
+      "name": "emmaly",
+      "description": "Core collaboration style, preferred technology stack, and development conventions",
+      "version": "0.2.0",
+      "source": "./",
+      "author": {
+        "name": "Emmaly",
+        "email": "emmaly@emma.ly"
+      }
+    }
+  ]
+}

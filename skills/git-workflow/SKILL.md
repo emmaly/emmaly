@@ -1,0 +1,25 @@
+---
+name: git-workflow
+description: Branching, conventional commits, PR descriptions, and GitHub issues workflow — use when committing, branching, or working with PRs and issues
+---
+
+## Branching
+
+- Never commit directly to `main`; always work in a feature/fix branch and open a PR
+- When working on an issue, create a branch named `fix/<number>-short-desc` or `feature/<number>-short-desc`
+
+## Commits
+
+- Use [Conventional Commits](https://www.conventionalcommits.org/): `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`, etc
+- Commit body should be detailed enough for an LLM to understand what changed and why
+
+## Pull Requests
+
+- PR descriptions must clearly explain what changed and why, optimized for automated LLM review tooling but clear for human review
+- Include `Fixes #<number>` or `Closes #<number>` in the PR description to auto-close related issues on merge
+- When updating a PR after review feedback, update the PR description to reflect current state, reply to relevant threads, and add a summary comment
+
+## GitHub Issues
+
+- Use `gh issue list` to review open issues and `gh issue view <number>` to read details
+- If an issue is too large, break it into sub-issues or a checklist before starting work

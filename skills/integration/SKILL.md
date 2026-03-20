@@ -1,0 +1,26 @@
+---
+name: integration
+description: CodeRabbit review loop, push/merge process — use when pushing code, opening PRs, or merging
+---
+
+Once implementation is complete and local verification passes (`go vet`, `gofmt`, tests, frontend build), proceed directly through this workflow without waiting for further instruction:
+
+**CRITICAL: Never push code to GitHub without a clean local CodeRabbit review first.** Every push (whether the initial PR push or a follow-up fix) must be preceded by a passing `coderabbit review --plain --base main`. The PR-level CodeRabbit review exists only as a final gate before merging as a third-party proof/receipt, not as the primary review. If code reaches GitHub with issues that local review would have caught, the workflow has failed.
+
+1. **Local CR review** (MANDATORY before any push): Run `coderabbit review --plain --base main` on the feature branch
+2. **Address findings**: Fix actionable issues; file GitHub issues for deferred items
+3. **Re-review if changed**: If step 2 produced commits, go back to step 1. Do NOT push until local review is clean
+4. **Push and open PR**: Only after local review reports no findings, push the branch and open/update the PR
+5. **Wait for PR review**: Wait 5 minutes, then check the PR's commit status; once checks pass, fetch and read all CodeRabbit review comments
+6. **If the PR review is clean**: Merge the PR and delete the remote and local feature branch; do not wait for confirmation
+7. **If the PR review has findings**: Fix locally, go back to step 1 (local CR review); do NOT push incremental fixes without a clean local review first
+
+Skip CodeRabbit review ONLY if explicitly requested.
+
+## CodeRabbit Tips
+
+- **Defer findings**: reply to any review comment with `@coderabbitai create a GitHub issue for this` to defer to follow-up issues
+- **Auto-paused reviews**: CodeRabbit auto-pauses after many commits; use `@coderabbitai resume` to un-pause
+- **Paginated reviews**: use `?per_page=100` when fetching via API: `gh api 'repos/{owner}/{repo}/pulls/{number}/reviews?per_page=100'`
+- **Duplicate comments**: means the issue was previously flagged and is still unfixed
+- **State**: `COMMENTED` = no actionable items; `CHANGES_REQUESTED` = has actionable comments
