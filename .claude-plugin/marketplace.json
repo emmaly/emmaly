@@ -11,8 +11,8 @@
     {
       "name": "emmaly-skills",
       "description": "Core collaboration style, preferred technology stack, and development conventions",
-      "version": "20260326001",
-      "source": "./emmaly-skills",
+      "version": "20260326002",
+      "source": "./skills/emmaly-skills",
       "author": {
         "name": "Emmaly",
         "email": "emmaly@emma.ly"
@@ -21,8 +21,8 @@
     {
       "name": "api-explorer",
       "description": "Discover, fetch, cache, and normalize third-party API documentation",
-      "version": "20260326001",
-      "source": "./api-explorer",
+      "version": "20260326002",
+      "source": "./skills/api-explorer",
       "author": {
         "name": "Emmaly",
         "email": "emmaly@emma.ly"
