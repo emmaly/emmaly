@@ -1,0 +1,13 @@
+{
+  "name": "api-explorer",
+  "description": "Discover, fetch, cache, and normalize third-party API documentation",
+  "version": "20260326001",
+  "author": {
+    "name": "Emmaly",
+    "email": "emmaly@emma.ly"
+  },
+  "homepage": "https://github.com/emmaly/emmaly",
+  "repository": "https://github.com/emmaly/emmaly",
+  "license": "MIT",
+  "keywords": ["api", "api-explorer"]
+}

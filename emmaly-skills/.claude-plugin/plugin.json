@@ -1,11 +1,10 @@
 {
-  "name": "emmaly",
+  "name": "emmaly-skills",
   "description": "Core collaboration style, preferred technology stack, and development conventions",
-  "version": "0.3.0",
+  "version": "20260326001",
   "author": {
     "name": "Emmaly",
-    "email": "emmaly@emma.ly",
-    "url": "https://emma.ly"
+    "email": "emmaly@emma.ly"
   },
   "homepage": "https://github.com/emmaly/emmaly",
   "repository": "https://github.com/emmaly/emmaly",
