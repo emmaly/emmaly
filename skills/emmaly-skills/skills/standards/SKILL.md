@@ -17,6 +17,16 @@ description: Emmaly's core collaboration style and preferred technology stack â€
 - SSE used proactively and plentifully for quick feedback/status/events from server to client
 - WebSocket used only when SSE isn't sufficient
 
+## Environment Variables
+
+- **Never `source` a `.env` file directly** â€” the user's shell is `fish`, so `source .env` will fail on `export KEY=VALUE` syntax.
+- Use `envwith` to load `.env` files and run commands with those variables overlaid on the current environment:
+  ```
+  envwith -f .secrets/.env -- <command> [args...]
+  ```
+- Install if not already available: `go install github.com/emmaly/envwith@latest`
+- `envwith` loads the file, overlays its variables onto the current environment, then executes the subcommand provided after `--`.
+
 ## Deployment Targets
 
 Projects vary widely; choose based on project needs:
