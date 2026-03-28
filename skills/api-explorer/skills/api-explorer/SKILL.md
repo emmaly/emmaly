@@ -121,7 +121,21 @@ Find API documentation sources. Try these in order, stopping when you have a usa
 
 5. **HTML doc sites.** If no machine-readable spec is found, fall back to the HTML documentation site. This is the least reliable path — flag it.
 
+6. **Postman collections.** Many APIs publish official Postman collections. Search for `"{api name}" postman collection` or check `www.postman.com/explore`. If found, curl the collection JSON directly to disk (`~/.cache/api-explorer/apis/{slug}/raw/{timestamp}/postman-collection.json`) then parse it locally. Postman collections contain endpoints, auth config, example requests/responses, and environment variables — rich source material.
+
+7. **Community-maintained spec registries.** Check [APIs.guru](https://apis.guru/) and their [GitHub repo](https://github.com/APIs-guru/openapi-directory) which aggregates thousands of OpenAPI specs. Also check [SwaggerHub](https://app.swaggerhub.com/search).
+
+8. **SDK source code.** Official SDKs (Go, Python, JS/TS) are often the most accurate documentation. Clone or browse the SDK repo — type definitions, method signatures, and inline comments reveal endpoints, params, and auth requirements. Look for generated clients (openapi-generator output) which may contain the original spec.
+
+9. **Package registry metadata.** `npm info`, `pip show`, or `go doc` on official SDK packages often link to API docs or source repos.
+
+10. **README and changelog files.** Official API repos frequently document endpoints, auth, and usage examples in their README. Don't overlook these.
+
+11. **Wayback Machine.** If a doc URL is dead or returning errors, try `web.archive.org/web/{url}` for archived versions.
+
 Record all discovered sources and their format type.
+
+> **Resourcefulness principle:** Do everything you can to get the documentation, even if it means unconventional approaches. If a Postman collection exists, curl it directly to disk and parse the file locally. If the only spec lives inside an SDK's generated client, read those source files. If the HTML docs are behind a SPA that WebFetch can't render, check if there's a static build or an API powering the docs page. If a spec URL returns a massive file, download it to the raw cache first rather than trying to hold it in context. The goal is a complete, accurate manifest — be creative about how you get there.
 
 ### Phase 4: Fetch and Store Raw
 
@@ -137,6 +151,11 @@ Record all discovered sources and their format type.
 | gRPC/protobuf | Download `.proto` files if available; note if only runtime reflection is possible |
 | RAML / API Blueprint | Download the spec file directly |
 | HTML doc site | Fetch relevant pages (scoped to user's requested area), save as HTML files |
+| Postman Collection | Download JSON, convert to OpenAPI-compatible structures during normalization |
+| SDK source code | Clone/download relevant type definition files and client methods |
+| APIs.guru / community spec | Download the spec file — treat as OpenAPI but verify version and accuracy |
+
+> **Large files:** When a spec or collection is large (>1MB), always download it to disk first (`WebFetch` → `Write` to `raw/{timestamp}/`), then read and parse from disk. Never try to hold a massive spec entirely in context — read it in sections during normalization.
 
 4. Write a `README.md` in the snapshot directory documenting what was fetched and from where
 5. Validate: check that specs are parseable (valid JSON/YAML, valid OpenAPI structure, etc.). If broken, note the issue and try alternate sources
@@ -343,6 +362,7 @@ The manifest is a single JSON file. Top-level structure:
 | RAML | Web search, GitHub | High |
 | API Blueprint | Web search, GitHub | Medium |
 | HTML documentation | Web scraping of doc pages | Low — flag in summary |
+| Postman Collection v2.x | Postman search, web search, `{api}.postman.co` | Medium — covers endpoints and examples but may lack full type schemas |
 
 When multiple formats are available, prefer machine-readable specs over HTML. Prefer OpenAPI 3.x over Swagger 2.0.
 
