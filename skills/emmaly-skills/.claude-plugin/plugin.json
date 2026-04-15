@@ -1,7 +1,7 @@
 {
   "name": "emmaly-skills",
   "description": "Core collaboration style, preferred technology stack, and development conventions",
-  "version": "20260405001",
+  "version": "20260415001",
   "author": {
     "name": "Emmaly",
     "email": "emmaly@emma.ly"
@@ -9,5 +9,5 @@
   "homepage": "https://github.com/emmaly/emmaly",
   "repository": "https://github.com/emmaly/emmaly",
   "license": "MIT",
-  "keywords": ["skills", "workflows", "productivity", "standards", "collaboration", "go", "svelte"]
+  "keywords": ["skills", "workflows", "productivity", "standards", "collaboration", "go", "svelte", "home-assistant"]
 }
